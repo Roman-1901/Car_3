@@ -20,12 +20,23 @@ public class MainCars {
         Bus liaz = new Bus("Лиаз", "4292", 2.6);
         Bus volvo = new Bus("Volvo", "7900", 2.2);
 
-        drive(audi, true,5.3, 250);    //методы из интерфейса переопределил только в родительском классе
-        drive(liaz, false,10.8, 180);  //переопределять для каждого класса не стал, так как не вижу смысла, информация выводится одинаковая для любого транспорта, независимо от его вида
+        drive(audi, true, 5.3, 250);    //методы из интерфейса переопределил только в родительском классе
+        drive(liaz, false, 10.8, 180);  //переопределять для каждого класса не стал, так как не вижу смысла, информация выводится одинаковая для любого транспорта, независимо от его вида
 
-        Driver<Car, Truck, Bus> ivan = new Driver<>("Иван Иванов", "B", 10);
+        Driver<Car, Truck, Bus> ivan = new Driver<>("Иван Иванов", "D", 10);
         ivan.driveTransport(kia);
         ivan.driveTransport(citroen); // в данном случае у водителя категория B, а данное авто относится к автобусам, водить его не может.
+
+
+
+
+        //-----------вторая реализация дженериков
+//        DriverB petr = new DriverB("петр петров", "B", 5, audi);
+//        petr.drive();
+//
+//        DriverC ivann = new DriverC("Иван Иванов", "B", 8, jac);
+//        ivann.drive();
+
 
     }
 
@@ -37,5 +48,4 @@ public class MainCars {
         transport.endMoving();
         System.out.println();
     }
-
 }
