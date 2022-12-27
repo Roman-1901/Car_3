@@ -2,7 +2,7 @@ import transport.*;
 
 import java.time.LocalDate;
 
-public class Driver<B extends Car, C extends Truck, D extends Bus> {
+public class Driver<T extends Transport> {
 
     private String name;
     private String driveLicense;
@@ -67,29 +67,8 @@ public class Driver<B extends Car, C extends Truck, D extends Bus> {
         System.out.println("Водитель " + name +" заправляется");
     }
 
-    public void driveTransport(B transport) {
-        if (driveLicense == "B") {
-            System.out.println("Водитель " + name + " управляет автомобилем " + transport.getBrand() +" " + transport.getModel() +" и будет участвовать в заезде");
-        } else {
-            System.out.println("Водитель " + name + " не может управлять данным авто");
-        }
-    }
 
-    public void driveTransport(C transport) {
-        if (driveLicense == "C") {
-            System.out.println("Водитель " + name + " управляет автомобилем " + transport.getBrand() +" " + transport.getModel() +" и будет участвовать в заезде");
-        } else {
-            System.out.println("Водитель " + name + " не может управлять данным авто");
-        }
-    }
 
-    public void driveTransport(D transport) {
-        if (driveLicense == "D") {
-            System.out.println("Водитель " + name + " управляет автомобилем " + transport.getBrand() +" " + transport.getModel() +" и будет участвовать в заезде");
-        } else {
-            System.out.println("Водитель " + name + " не может управлять данным авто");
-        }
-    }
 
     @Override
     public String toString() {

@@ -1,11 +1,11 @@
 import transport.Car;
 import transport.Truck;
 
-public class DriverC<C extends Truck> extends Driver{
+public class DriverC extends Driver<Truck>{
 
-    private C transport;
+    private Truck transport;
 
-    public DriverC(String name, String driveLicense, int experience, C transport) {
+    public DriverC(String name, String driveLicense, int experience, Truck transport) {
         super(name, driveLicense, experience);
         if (driveLicense == "C") {
             this.transport = transport;
@@ -14,12 +14,12 @@ public class DriverC<C extends Truck> extends Driver{
         }
     }
 
-    public C getTransport() {
+    public Truck getTransport() {
         return transport;
     }
 
 
-    public void setTransport(C transport) {
+    public void setTransport(Truck transport) {
         this.transport = transport;
     }
 
