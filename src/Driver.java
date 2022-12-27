@@ -6,10 +6,11 @@ public abstract class Driver<T extends Transport> {
 
     private String name;
     private String driveLicense;
+
     int experience;
     private final int yearDriveLicense;
 
-
+    private T transport;
 
 
     public Driver(String name, String driveLicense, int experience) {
@@ -68,7 +69,8 @@ public abstract class Driver<T extends Transport> {
         System.out.println("Водитель " + name +" заправляется");
     }
 
-    public abstract void drive(T transport);
+    public abstract  void drive(T transport);
+
 
     @Override
     public String toString() {

@@ -1,4 +1,5 @@
 import transport.Car;
+import transport.Truck;
 
 public class DriverB extends Driver<Car>{
 private Car transport;
@@ -14,6 +15,7 @@ private Car transport;
             System.out.println("Водитель " + getName() + " не может управлять данным авто");
         }
     }
+
         @Override
         public String toString() {
             return "Driver{" +

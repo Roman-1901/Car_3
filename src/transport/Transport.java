@@ -7,6 +7,7 @@ public abstract class Transport implements  Competing{
     private double engineVolume;
 
 
+
     public Transport(String brand, String model, double engineVolume) {
         String def = "default";
         if (brand == null || brand.isBlank()) {
@@ -23,6 +24,7 @@ public abstract class Transport implements  Competing{
         this.engineVolume = engineVolume;
     }
 
+
     public String getBrand() {
         return brand;
     }
@@ -34,6 +36,8 @@ public abstract class Transport implements  Competing{
     public double getEngineVolume() {
         return engineVolume;
     }
+
+
 
     public void startMoving() {
         System.out.println(getBrand() +" " + getModel() + " начинает движение");
@@ -61,6 +65,9 @@ public abstract class Transport implements  Competing{
     public void maxSpeed(int speed) {
         System.out.println("Максимальная скорость " + speed + " км/ч.");
     }
+
+
+    public abstract void printType();
 
     @Override
     public String toString() {
