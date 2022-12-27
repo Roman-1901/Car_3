@@ -9,7 +9,6 @@ public class Driver<T extends Transport> {
     int experience;
     private final int yearDriveLicense;
 
-    private T transport;
 
 
 
