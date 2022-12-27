@@ -29,7 +29,7 @@ public class MainCars {
         DriverB petr = new DriverB("петр петров", "B", 5);
         petr.drive(audi);
 
-        DriverC ivan = new DriverC("Иван Иванов", "B", 8);
+        DriverC ivan = new DriverC("Иван Иванов", "C", 8);
         ivan.drive(jac);
 
 

@@ -2,7 +2,7 @@ import transport.*;
 
 import java.time.LocalDate;
 
-public class Driver<T extends Transport> {
+public abstract class Driver<T extends Transport> {
 
     private String name;
     private String driveLicense;
@@ -68,6 +68,7 @@ public class Driver<T extends Transport> {
         System.out.println("Водитель " + name +" заправляется");
     }
 
+    public abstract void drive(T transport);
 
     @Override
     public String toString() {
