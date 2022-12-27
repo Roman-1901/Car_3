@@ -9,6 +9,8 @@ public class Driver<T extends Transport> {
     int experience;
     private final int yearDriveLicense;
 
+    private T transport;
+
 
 
     public Driver(String name, String driveLicense, int experience) {
@@ -66,8 +68,6 @@ public class Driver<T extends Transport> {
     public void refuelCar() {
         System.out.println("Водитель " + name +" заправляется");
     }
-
-
 
 
     @Override

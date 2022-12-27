@@ -26,11 +26,11 @@ public class MainCars {
 
 
 
-        DriverB petr = new DriverB("петр петров", "B", 5, audi);
-        petr.drive();
+        DriverB petr = new DriverB("петр петров", "B", 5);
+        petr.drive(audi);
 
-        DriverC ivann = new DriverC("Иван Иванов", "C", 8, foton);
-        ivann.drive();
+        DriverC ivan = new DriverC("Иван Иванов", "C", 8);
+        ivan.drive(jac);
 
 
     }

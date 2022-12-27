@@ -1,35 +1,25 @@
 import transport.Car;
+import transport.Transport;
 import transport.Truck;
 
 public class DriverC extends Driver<Truck>{
 
-    private Truck transport;
+private Truck transport;
 
-    public DriverC(String name, String driveLicense, int experience, Truck transport) {
+    public DriverC(String name, String driveLicense, int experience) {
         super(name, driveLicense, experience);
-        if (driveLicense == "C") {
-            this.transport = transport;
-        } else {
-            this.transport = null;
-        }
+
     }
 
-    public Truck getTransport() {
-        return transport;
-    }
-
-
-    public void setTransport(Truck transport) {
+    public void drive(Truck transport) {
         this.transport = transport;
-    }
-
-    public void drive() {
-        if (this.transport != null) {
+        if (getDriveLicense() == "C") {
             System.out.println("Водитель " + getName() + " управляет автомобилем " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде");
         } else {
-            System.out.println("Нельзя управлять данным транспортом");
+            System.out.println("Водитель " + getName() + " не может управлять данным авто");
         }
     }
+
     @Override
     public String toString() {
         return "Driver{" +
