@@ -44,7 +44,7 @@ public abstract class Driver<T extends Transport> {
 
 
 
-    public void checkDriveLicense(String driveLicense) throws NotDriveLicense{
+    public void setDriveLicense(String driveLicense) throws NotDriveLicense{
         if (driveLicense.equals("B") || driveLicense.equals("C") || driveLicense.equals("D")) {
             this.driveLicense = driveLicense;
         } else {
@@ -53,13 +53,6 @@ public abstract class Driver<T extends Transport> {
     }
 
 
-    public void setDriveLicense(String driveLicense){
-        try {
-            checkDriveLicense(driveLicense);
-        } catch (NotDriveLicense e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
     public int getExperience() {
         experience = LocalDate.now().getYear() - yearDriveLicense;

@@ -50,9 +50,9 @@ public class MainCars {
         checkDiagnostic(mercedes); //в данном методе проверяется, прошло ли авто диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
         System.out.println();
 
-        DriverB vasya = new DriverB("Вася Пупкин", "E", 10);
-        DriverB roma = new DriverB("Роман Громов", "B", 10);
-        DriverB dima = new DriverB("Дмитрий Тимошенко", "W", 10);
+        DriverB vasya = new DriverB("Вася Пупкин", "qw", 10);
+        DriverC roma = new DriverC("Роман Громов", "C", 10);
+        DriverB dima = new DriverB("Дмитрий Тимошенко", "", 10);
         DriverB john = new DriverB("Ввгений Романов", "B", 10);
 
     }
