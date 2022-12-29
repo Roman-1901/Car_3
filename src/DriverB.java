@@ -1,9 +1,9 @@
+import Exceptions.NotDriveLicense;
 import transport.Car;
-import transport.Truck;
 
 public class DriverB extends Driver<Car>{
 private Car transport;
-        public DriverB(String name, String driveLicense, int experience) throws NotDriveLicense{
+        public DriverB(String name, String driveLicense, int experience) throws NotDriveLicense {
             super(name, driveLicense, experience);
         }
 

@@ -1,6 +1,6 @@
+import Exceptions.NotDriveLicense;
 import transport.Bus;
 import transport.Car;
-import transport.Transport;
 import transport.Truck;
 
 import static transport.Transport.*;
@@ -47,7 +47,7 @@ public class MainCars {
 
         doDiagnostic(bmw, sollers, volvo, kia, liaz, audi); //в данном методе производится диагностика автомобилей, добавленных в парметры
         System.out.println();
-        checkDiagnostic(mercedes); //в данном методе проверяется, прошло ли авто диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
+        checkDiagnostic(mercedes, audi, sollers, kia, foton, volvo); //в данном методе проверяется, прошло ли авто диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
         System.out.println();
 
         DriverB vasya = new DriverB("Вася Пупкин", "qw", 10);

@@ -1,5 +1,5 @@
+import Exceptions.NotDriveLicense;
 import transport.Bus;
-import transport.Car;
 
 public class DriverD extends Driver<Bus>{
 
