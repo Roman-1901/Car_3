@@ -13,16 +13,9 @@ public abstract class Driver<T extends Transport> {
     private T transport;
 
 
-    public Driver(String name, String driveLicense, int experience) {
-        if (name == null || name.isBlank()) {
-            name = "Иванов Иван Иванович";
-        }
-        this.name = name;
-
-        if (driveLicense == null || driveLicense.isBlank()) {
-            driveLicense = "Категорию прав не имеет";
-        }
-        this.driveLicense = driveLicense;
+    public Driver(String name, String driveLicense, int experience) throws NotDriveLicense {
+        setName(name);
+        setDriveLicense(driveLicense);
 
         if (experience <= 0) {
             experience = 1;
@@ -37,16 +30,29 @@ public abstract class Driver<T extends Transport> {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.isBlank()) {
+            throw new IllegalArgumentException("Укажите ФИО");
+        } else {
+            this.name = name;
+        }
     }
 
     public String getDriveLicense() {
         return driveLicense;
     }
 
-    public void setDriveLicense(String driveLicense) {
-        this.driveLicense = driveLicense;
+
+
+
+    public void setDriveLicense(String driveLicense) throws NotDriveLicense {
+        if (driveLicense.equals("B") || driveLicense.equals("C") || driveLicense.equals("D")) {
+            this.driveLicense = driveLicense;
+        } else {
+            throw new NotDriveLicense(name + " необходимо указать тип прав");
+        }
     }
+
+
 
     public int getExperience() {
         experience = LocalDate.now().getYear() - yearDriveLicense;
@@ -58,18 +64,18 @@ public abstract class Driver<T extends Transport> {
     }
 
     public void startMoving() {
-        System.out.println("Водитель " + name +" начинает движение");
+        System.out.println("Водитель " + name + " начинает движение");
     }
 
     public void stopMoving() {
-        System.out.println("Водитель " + name +" останавливается");
+        System.out.println("Водитель " + name + " останавливается");
     }
 
     public void refuelCar() {
-        System.out.println("Водитель " + name +" заправляется");
+        System.out.println("Водитель " + name + " заправляется");
     }
 
-    public abstract  void drive(T transport);
+    public abstract void drive(T transport);
 
 
     @Override

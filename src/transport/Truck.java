@@ -3,12 +3,12 @@ package transport;
 public class Truck extends Transport implements Competing {
 
     public enum TruckType {
-        N1(null, 3.5), N2(3.5, 12.0), N3(12.0, null);
+        N1(null, 3.5F), N2(3.5F, 12.0F), N3(12.0F, null);
 
-        private Double lowerLimit;
-        private Double upperLimit;
+        private Float lowerLimit;
+        private Float upperLimit;
 
-        TruckType(Double lowerLimit, Double upperLimit) {
+        TruckType(Float lowerLimit, Float upperLimit) {
             this.lowerLimit = lowerLimit;
             this.upperLimit = upperLimit;
         }
@@ -45,6 +45,11 @@ public class Truck extends Transport implements Competing {
         } else {
             System.out.println(getType());
         }
+    }
+
+    public void Diagnostic() {
+        setService(true);
+        System.out.println("Транспортное средство " + getBrand() + " " + getModel() + " прошло диагностику");
     }
 
     @Override

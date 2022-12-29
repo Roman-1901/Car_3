@@ -3,7 +3,7 @@ package transport;
 public class Bus extends Transport implements Competing {
 
     public enum BusType {
-        SMALLEST(0, 10), SMALL(0, 25), MEDIUM(40, 50), BIG(60, 80), BIGGEST(100, 120);
+        SMALLEST(null, 10), SMALL(null, 25), MEDIUM(40, 50), BIG(60, 80), BIGGEST(100, 120);
         private Integer lowerLimit;
         private Integer upperLimit;
 
@@ -14,9 +14,9 @@ public class Bus extends Transport implements Competing {
 
         @Override
         public String toString() {
-            if (lowerLimit == 0) {
+            if (lowerLimit == null) {
                 return "Вместимость: до " + upperLimit + " мест";
-            } else if (upperLimit == 0) {
+            } else if (upperLimit == null) {
                 return "Вместимость: от " + lowerLimit + " мест";
             } else {
                 return "Вместимость: " + lowerLimit + " - " + upperLimit + " мест";
@@ -29,6 +29,7 @@ public class Bus extends Transport implements Competing {
     public Bus(String brand, String model, double engineVolume, BusType type) {
         super(brand, model, engineVolume);
         this.type = type;
+        setService(true);
     }
 
     public BusType getType() {
@@ -46,6 +47,7 @@ public class Bus extends Transport implements Competing {
             System.out.println(getType());
         }
     }
+
 
     @Override
     public String toString() {

@@ -5,7 +5,8 @@ public class DriverD extends Driver<Bus>{
 
     private Bus transport;
 
-    public DriverD(String name, String driveLicense, int experience) {
+    public DriverD(String name, String driveLicense, int experience) throws NotDriveLicense {
+
         super(name, driveLicense, experience);
     }
 

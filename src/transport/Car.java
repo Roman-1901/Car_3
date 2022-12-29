@@ -45,6 +45,10 @@ public class Car extends Transport implements Competing {
             System.out.println(getType());
         }
     }
+    public void Diagnostic() {
+        setService(true);
+        System.out.println("Транспортное средство " + getBrand() + " " + getModel() + " прошло диагностику");
+    }
 
     @Override
     public String toString() {

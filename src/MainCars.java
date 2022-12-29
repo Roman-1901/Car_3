@@ -3,8 +3,10 @@ import transport.Car;
 import transport.Transport;
 import transport.Truck;
 
+import static transport.Transport.*;
+
 public class MainCars {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NotDriveLicense {
         Car bmw = new Car("BMW", "Z8", 3.0, Car.CarType.HATCHBACK);
         Car kia = new Car("Kia", "Sportage 4", 2.4, Car.CarType.SEDAN);
         Car audi = new Car("Audi", "A8", 3.0, Car.CarType.MINIVAN);
@@ -20,6 +22,8 @@ public class MainCars {
         Bus liaz = new Bus("Лиаз", "4292", 2.6, Bus.BusType.BIGGEST);
         Bus volvo = new Bus("Volvo", "7900", 2.2, null);
 
+
+
 //       drive(audi, true, 5.3, 250);    //методы из интерфейса переопределил только в родительском классе
 //        drive(liaz, false, 10.8, 180);  //переопределять для каждого класса не стал, так как не вижу смысла, информация выводится одинаковая для любого транспорта, независимо от его вида
 //
@@ -27,27 +31,22 @@ public class MainCars {
 //        DriverB petr = new DriverB("петр петров", "B", 5);
 //        petr.drive(audi);
 //
-//        DriverC ivan = new DriverC("Иван Иванов", "B", 8);
+//        DriverC ivan = new DriverC("Иван Иванов", "dfd", 8);
 //        ivan.drive(jac);
 
+//        System.out.println(audi);
+//        System.out.println(sollers);
+//        System.out.println(jac);
+//        System.out.println(liaz);
+//        System.out.println(citroen);
+//        volvo.printType();
+//        kia.printType();
 
-        System.out.println(audi);
-        System.out.println(sollers);
-        System.out.println(jac);
-        System.out.println(liaz);
-        System.out.println(citroen);
-        volvo.printType();
-        kia.printType();
+        doDiagnostic(bmw, sollers, volvo, kia, liaz, audi); //в данном методе производится диагностика автомобилей, добавленных в парметры
+        System.out.println();
+        checkDiagnostic(mercedes, foton); //в данном методе проверяется, прошло ли авто диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
+        System.out.println();
 
+        DriverB vasya = new DriverB("Вася Пупкин", "G", 10);
     }
-
-
-//    public static void drive(Transport transport, boolean pitStop,double minutes, int speed) {
-//        transport.startMoving();
-//        transport.pitStop(pitStop);
-//        transport.bestLapTime(minutes);
-//        transport.maxSpeed(speed);
-//        transport.endMoving();
-//        System.out.println();
-//    }
 }
