@@ -12,7 +12,7 @@ public class DriverD extends Driver<Bus>{
 
     public void drive(Bus transport) {
         this.transport = transport;
-        if (getDriveLicense() == "D") {
+        if (getDriveLicense().equals("D")) {
             System.out.println("Водитель " + getName() + " управляет автомобилем " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде");
         } else {
             System.out.println("Водитель " + getName() + " не может управлять данным авто");

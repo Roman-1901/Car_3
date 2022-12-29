@@ -13,7 +13,7 @@ private Truck transport;
 
     public void drive(Truck transport) {
         this.transport = transport;
-        if (getDriveLicense() == "C") {
+        if (getDriveLicense().equals("C")) {
             System.out.println("Водитель " + getName() + " управляет автомобилем " + transport.getBrand() + " " + transport.getModel() + " и будет участвовать в заезде");
         } else {
             System.out.println("Водитель " + getName() + " не может управлять данным авто");
