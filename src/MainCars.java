@@ -47,7 +47,7 @@ public class MainCars {
 
         doDiagnostic(bmw, sollers, volvo, kia, liaz, audi); //в данном методе производится диагностика автомобилей, добавленных в парметры
         System.out.println();
-        checkDiagnostic(mercedes, audi, sollers, kia, volvo); //в данном методе проверяется, прошло ли авто диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
+        checkDiagnostic(mercedes, man, audi, sollers, kia, volvo); //в данном методе проверяется, прошло ли авто ранее диагностику. Те авто, что прошли диагностику, и автобусы - проверка по ним пройдет без проблем, которые ранее не проходили, по ним выйдет ошибка
         System.out.println();
 
         DriverB vasya = new DriverB("Вася Пупкин", null, 10);
