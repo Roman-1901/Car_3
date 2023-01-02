@@ -45,8 +45,23 @@ public abstract class Driver<T extends Transport> {
 
 
 
-    public void setDriveLicense(String driveLicense) throws NotDriveLicense{
-        if (driveLicense.equals("B") || driveLicense.equals("C") || driveLicense.equals("D")) {
+    public void setDriveLicense(String driveLicense){
+        try {
+            checkDriveLicense(driveLicense);
+        } catch (NotDriveLicense e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void checkDriveLicense (String driveLicense) throws NotDriveLicense{
+        if (driveLicense == null || driveLicense.isBlank()) {
+            try {
+                throw new NotDriveLicense("Необходимо указать тип прав для " + name);
+            } catch (NotDriveLicense e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else if (driveLicense.equals("B") || driveLicense.equals("C") || driveLicense.equals("D")) {
             this.driveLicense = driveLicense;
         } else {
             throw new NotDriveLicense("Необходимо указать тип прав для " + name);
