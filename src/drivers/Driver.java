@@ -1,17 +1,17 @@
-package drivers;
-
 import Exceptions.NotDriveLicense;
 import transport.*;
 
 import java.time.LocalDate;
 
 public abstract class Driver<T extends Transport> {
+
     private String name;
     private String driveLicense;
 
     int experience;
     private final int yearDriveLicense;
 
+    private T transport;
 
 
     public Driver(String name, String driveLicense, int experience) throws NotDriveLicense {
@@ -45,7 +45,7 @@ public abstract class Driver<T extends Transport> {
 
 
 
-    public void checkDriveLicense(String driveLicense) throws NotDriveLicense{
+    public void setDriveLicense(String driveLicense) throws NotDriveLicense{
         if (driveLicense.equals("B") || driveLicense.equals("C") || driveLicense.equals("D")) {
             this.driveLicense = driveLicense;
         } else {
@@ -53,13 +53,6 @@ public abstract class Driver<T extends Transport> {
         }
     }
 
-    public void setDriveLicense(String driveLicense){
-        try {
-            checkDriveLicense(driveLicense);
-        } catch (NotDriveLicense e) {
-            System.out.println(e.getMessage());
-        }
-    }
 
 
     public int getExperience() {
@@ -88,10 +81,10 @@ public abstract class Driver<T extends Transport> {
 
     @Override
     public String toString() {
-        return
-                "Водитель " + getName() +
-                        ", Водительское удостоверение " + getDriveLicense() +
-                        ", Срок водительского удостоверения " + getExperience();
+        return "Driver{" +
+                "name='" + name + '\'' +
+                ", driveLicense='" + driveLicense + '\'' +
+                ", experience=" + experience + "}";
     }
 }
 
