@@ -80,13 +80,13 @@ public class Mechanic {
         if (name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname()) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname())))  {
             System.out.println("Механик "+ name + " " + surname + " успешно отремонтировал транспорт " + transport.getBrand() + " " + transport.getModel());
         }
-//        else {
-//            try {
-//                throw new RuntimeException("Механик "+ name + " " + surname + " имеет квалификацию, но не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel() + ", т.к. не был закреплен за ним");
-//            } catch (RuntimeException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
+        else {
+            try {
+                throw new RuntimeException("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 
@@ -97,7 +97,7 @@ public class Mechanic {
         try {
             checkingService(transport);
         } catch (RuntimeException e) {
-            System.out.println("Механик "+ name + " " + surname + " не может обслуживать транспорт " + transport.getBrand() + " " + transport.getModel());
+            System.out.println("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
         }
     }
 
@@ -120,13 +120,13 @@ public class Mechanic {
         if ((name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname())) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname()))) {
             System.out.println("Механик " + name + " " + surname + " успешно провел техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
         }
-//        else {
-//            try {
-//                throw new RuntimeException("Механик "+ name + " " + surname + " имеет квалификацию, но не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel() + ", т.к. не был закреплен за ним");
-//            } catch (RuntimeException e) {
-//                System.out.println(e.getMessage());
-//            }
-//        }
+        else {
+            try {
+                throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
     }
 
 

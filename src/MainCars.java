@@ -113,7 +113,7 @@ public class MainCars {
         //Cars
         transports.get(0).addMechanics(mechanics.get(0), mechanics.get(13)); // Успешно добавятся оба
         transports.get(1).addMechanics(mechanics.get(4)); // Не добавится, т.к. механик имеет доступ к Truck
-        transports.get(2).addMechanics(mechanics.get(2), mechanics.get(0)); // Успешно добавятся оба
+        transports.get(2).addMechanics(mechanics.get(2), mechanics.get(1)); // Успешно добавятся оба
         transports.get(3).addMechanics(mechanics.get(9), mechanics.get(2)); //Первый не добавится(имеет доступ к Bus), второй добавится
 
         //Trucks
