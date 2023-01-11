@@ -3,7 +3,8 @@ package drivers;
 import Exceptions.NotDriveLicense;
 import transport.Truck;
 
-public class DriverC extends Driver<Truck>{
+
+public class DriverC extends Driver<Truck> {
 
 private Truck transport;
 

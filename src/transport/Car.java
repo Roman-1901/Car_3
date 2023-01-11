@@ -1,11 +1,6 @@
 package transport;
 
-import Exceptions.NotDriveLicense;
-import drivers.Driver;
 import drivers.DriverB;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Car extends Transport implements Competing {
 

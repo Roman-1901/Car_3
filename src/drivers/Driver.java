@@ -1,3 +1,5 @@
+package drivers;
+
 import Exceptions.NotDriveLicense;
 import transport.*;
 
@@ -81,10 +83,7 @@ public abstract class Driver<T extends Transport> {
 
     @Override
     public String toString() {
-        return "Driver{" +
-                "name='" + name + '\'' +
-                ", driveLicense='" + driveLicense + '\'' +
-                ", experience=" + experience + "}";
+        return "Водитель " + name + ", водительские права " + driveLicense + ", срок действия прав " + experience;
     }
 }
 

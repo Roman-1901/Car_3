@@ -3,7 +3,9 @@ package drivers;
 import Exceptions.NotDriveLicense;
 import transport.Car;
 
-public class DriverB extends Driver<Car>{
+
+
+public class DriverB extends Driver<Car> {
 private Car transport;
         public DriverB(String name, String driveLicense, int experience) throws NotDriveLicense {
             super(name, driveLicense, experience);
