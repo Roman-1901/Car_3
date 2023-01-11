@@ -1,5 +1,7 @@
 package transport;
 
+import drivers.DriverC;
+
 public class Truck extends Transport implements Competing {
 
     public enum TruckType {
@@ -27,8 +29,8 @@ public class Truck extends Transport implements Competing {
 
     private TruckType type;
 
-    public Truck(String brand, String model, double engineVolume, TruckType type) {
-        super(brand, model, engineVolume);
+    public Truck(String brand, String model, double engineVolume, TruckType type, DriverC driver) {
+        super(brand, model, engineVolume, driver);
         this.type = type;
     }
 
@@ -47,13 +49,43 @@ public class Truck extends Transport implements Competing {
         }
     }
 
+    public void addMechanics(Mechanic mechanic1) {
+        if (mechanic1.getAccessCar().getNum() == 2 || mechanic1.getAccessCar().getNum() == 4) {
+            setMechanic(mechanic1);
+        } else {
+            try {
+                throw new RuntimeException("Нельзя добавить данного механика " + mechanic1.getName() + " "+ mechanic1.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public void addMechanics(Mechanic mechanic1, Mechanic mechanic2) {
+        if ((mechanic1.getAccessCar().getNum() == 2 || mechanic1.getAccessCar().getNum() == 4) && (mechanic2.getAccessCar().getNum() != 2 && mechanic2.getAccessCar().getNum() != 4)) {
+            setMechanic(mechanic1);
+            try {
+                throw new RuntimeException("Нельзя добавить второго механика " + mechanic2.getName() + " "+ mechanic2.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        } else if ((mechanic1.getAccessCar().getNum() == 2 || mechanic1.getAccessCar().getNum() == 4) && (mechanic2.getAccessCar().getNum() == 2 || mechanic2.getAccessCar().getNum() == 4)) {
+            setMechanic(mechanic1, mechanic2);
+        } else if ((mechanic1.getAccessCar().getNum() != 2 && mechanic1.getAccessCar().getNum() != 4) && (mechanic2.getAccessCar().getNum() == 2 || mechanic2.getAccessCar().getNum() == 4)) {
+            setMechanic(mechanic2);
+            try {
+                throw new RuntimeException("Нельзя добавить первого механика " + mechanic1.getName() + " "+ mechanic1.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    @Override
     public void Diagnostic() {
         setService(true);
         System.out.println("Транспортное средство " + getBrand() + " " + getModel() + " прошло диагностику");
     }
 
-    @Override
-    public String toString() {
-        return "Данные грузового автомобиля: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + ", " + type;
-    }
+
 }

@@ -1,5 +1,8 @@
 package transport;
 
+import drivers.Driver;
+import drivers.DriverB;
+
 public abstract class Transport implements  Competing{
     private final String brand;
     private final String model;
@@ -8,7 +11,12 @@ public abstract class Transport implements  Competing{
 
     private boolean service;
 
-    public Transport(String brand, String model, double engineVolume) {
+    private Driver driver;
+
+    private Mechanic mechanic1;
+    private Mechanic mechanic2;
+
+    public Transport(String brand, String model, double engineVolume, Driver driver) {
         String def = "default";
         if (brand == null || brand.isBlank()) {
             brand = def;
@@ -23,7 +31,10 @@ public abstract class Transport implements  Competing{
         this.model = model;
         this.engineVolume = engineVolume;
         this.service = false;
-    }
+        this.driver = driver;
+
+        }
+
 
 
     public String getBrand() {
@@ -54,7 +65,34 @@ public abstract class Transport implements  Competing{
         System.out.println(getBrand() +" " + getModel() + " заканчивает движение");
     }
 
+    public Driver getDriver() {
+        return driver;
+    }
 
+    public void setDriver(Driver driver) {
+        this.driver = driver;
+    }
+
+
+    public void setMechanic(Mechanic mechanic1) {
+        this.mechanic1 = mechanic1;
+    }
+
+    public void setMechanic(Mechanic mechanic1, Mechanic mechanic2) {
+        this.mechanic1 = mechanic1;
+        this.mechanic2 = mechanic2;
+    }
+
+    public Mechanic getMechanic1() {
+        return mechanic1;
+    }
+
+    public Mechanic getMechanic2() {
+        return mechanic2;
+    }
+
+    public abstract void addMechanics(Mechanic mechanic1);
+    public abstract void addMechanics(Mechanic mechanic1, Mechanic mechanic2);
 
     @Override
     public void pitStop(boolean pitStop) {
@@ -87,6 +125,8 @@ public abstract class Transport implements  Competing{
 
     public abstract void printType();
 
+
+
     public void Diagnostic() {
         setService(true);
         throw new UnsupportedOperationException(getBrand() + " " + getModel() + " - данный вид транспорта в диагностике не требуется");
@@ -112,13 +152,18 @@ public abstract class Transport implements  Competing{
         }
     }
 
+
+
+
     @Override
     public String toString() {
-        return "Transport{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", engineVolume=" + engineVolume +
-                '}';
+        if (getDriver() != null) {
+            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n"
+                    + getDriver() + "\n" + "Механик 1: "+ getMechanic1() + "\n"+ "Механик 2: " + getMechanic2() + "\n";
+        } else {
+            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n"
+                    + "Водитель отсутствует" + "\n" + "Механик 1: "+ getMechanic1() + "\n"+ "Механик 2: " + getMechanic2() + "\n";
+        }
     }
 }
 
