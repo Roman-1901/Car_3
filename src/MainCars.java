@@ -7,6 +7,7 @@ import drivers.DriverD;
 import transport.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -34,7 +35,7 @@ public class MainCars {
 // - Добавлены механики. Для каждого механика добавлен Enum, может ли он обслуживать только определенный тип авто, либо все авто.
 //   При добавлении механиков к автомобилям будет учитываться навык механика. То есть, если к автомобилю из класса Car добавить механика, который обслуживает только грузовики ONLY_TRUCK,
 //   данный механик не добавится к автотранспорту.
-        List<Mechanic> mechanics = new ArrayList<>();
+//        List<Mechanic> mechanics = new ArrayList<>();
 
         Mechanic mechanicCar1 = new Mechanic("Василий", "Иванов", "Компания1", Mechanic.AccessCar.ONLY_CAR);
         Mechanic mechanicCar2 = new Mechanic("Иван", "Семенов", "Компания2", Mechanic.AccessCar.ONLY_CAR);
@@ -56,22 +57,25 @@ public class MainCars {
         Mechanic mechanicAll3 = new Mechanic("Дмитрий", "Максименко", "Компания2", Mechanic.AccessCar.ALL_TRANSPORT);
         Mechanic mechanicAll4 = new Mechanic("Константин", "Плюхин", "Компания3", Mechanic.AccessCar.ALL_TRANSPORT);
 
-        mechanics.add(mechanicCar1);
-        mechanics.add(mechanicCar2);
-        mechanics.add(mechanicCar3);
-        mechanics.add(mechanicCar4);
-        mechanics.add(mechanicTruck1);
-        mechanics.add(mechanicTruck2);
-        mechanics.add(mechanicTruck3);
-        mechanics.add(mechanicTruck4);
-        mechanics.add(mechanicBus1);
-        mechanics.add(mechanicBus2);
-        mechanics.add(mechanicBus3);
-        mechanics.add(mechanicBus4);
-        mechanics.add(mechanicAll1);
-        mechanics.add(mechanicAll2);
-        mechanics.add(mechanicAll3);
-        mechanics.add(mechanicAll4);
+        List<Mechanic> mechanics = Arrays.asList(mechanicCar1, mechanicCar2, mechanicCar3, mechanicCar4, mechanicTruck1, mechanicTruck2, mechanicTruck3, mechanicTruck4, mechanicBus1, mechanicBus2,
+                mechanicBus3, mechanicBus4, mechanicAll1, mechanicAll2, mechanicAll3, mechanicAll4);
+
+//        mechanics.add(mechanicCar1);
+//        mechanics.add(mechanicCar2);
+//        mechanics.add(mechanicCar3);
+//        mechanics.add(mechanicCar4);
+//        mechanics.add(mechanicTruck1);
+//        mechanics.add(mechanicTruck2);
+//        mechanics.add(mechanicTruck3);
+//        mechanics.add(mechanicTruck4);
+//        mechanics.add(mechanicBus1);
+//        mechanics.add(mechanicBus2);
+//        mechanics.add(mechanicBus3);
+//        mechanics.add(mechanicBus4);
+//        mechanics.add(mechanicAll1);
+//        mechanics.add(mechanicAll2);
+//        mechanics.add(mechanicAll3);
+//        mechanics.add(mechanicAll4);
 
 
                       // Добавлены автомобили и закреплены водители. Также сделано ограничение, например, нельзя добавить водителя категории С к автомобилю категории B т т.д.

@@ -55,79 +55,38 @@ public class Mechanic {
 
     public void fixTransport (Transport transport) {
         try {
-            checkingFix(transport);
+            if (name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname()) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname())))  {
+                System.out.println("Механик "+ name + " " + surname + " успешно отремонтировал транспорт " + transport.getBrand() + " " + transport.getModel());
+            }  else {
+                try {
+                    throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         } catch (RuntimeException e) {
             System.out.println("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
         }
     }
 
-    private void checkingFix(Transport transport) {
-        if (accessCar.getNum() == 1) {
-            Car car = (Car) transport;
-            fixTrans(car);
-        } else if (accessCar.getNum() == 2) {
-            Truck truck = (Truck) transport;
-            fixTrans(truck);
-        } else if (accessCar.getNum() == 3) {
-            Bus bus = (Bus) transport;
-            fixTrans(bus);
-        } else {
-            fixTrans(transport);
-        }
-    }
-
-    private void fixTrans(Transport transport) {
-        if (name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname()) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname())))  {
-            System.out.println("Механик "+ name + " " + surname + " успешно отремонтировал транспорт " + transport.getBrand() + " " + transport.getModel());
-        }
-        else {
-            try {
-                throw new RuntimeException("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
-
-
-
-
 
     public void serviceTransport (Transport transport) {
         try {
-            checkingService(transport);
+            if ((name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname())) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname()))) {
+                System.out.println("Механик " + name + " " + surname + " успешно провел техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+            }
+            else {
+                try {
+                    throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
         } catch (RuntimeException e) {
             System.out.println("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
         }
     }
 
-    private void checkingService(Transport transport) {
-        if (accessCar.getNum() == 1) {
-            Car car = (Car) transport;
-            serviceTrans(car);
-        } else if (accessCar.getNum() == 2) {
-            Truck truck = (Truck) transport;
-            serviceTrans(truck);
-        } else if (accessCar.getNum() == 3) {
-            Bus bus = (Bus) transport;
-            serviceTrans(bus);
-        } else {
-            serviceTrans(transport);
-        }
-    }
-
-    private void serviceTrans(Transport transport) {
-        if ((name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname())) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname()))) {
-            System.out.println("Механик " + name + " " + surname + " успешно провел техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
-        }
-        else {
-            try {
-                throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-    }
 
 
 
