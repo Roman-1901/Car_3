@@ -7,8 +7,12 @@ import drivers.DriverD;
 import transport.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
 import java.util.List;
+
+
+import static transport.Transport.showInfoTransport;
+import static transport.Transport.showInfoTransports;
 
 
 public class MainCars {
@@ -57,25 +61,24 @@ public class MainCars {
         Mechanic mechanicAll3 = new Mechanic("Дмитрий", "Максименко", "Компания2", Mechanic.AccessCar.ALL_TRANSPORT);
         Mechanic mechanicAll4 = new Mechanic("Константин", "Плюхин", "Компания3", Mechanic.AccessCar.ALL_TRANSPORT);
 
-        List<Mechanic> mechanics = Arrays.asList(mechanicCar1, mechanicCar2, mechanicCar3, mechanicCar4, mechanicTruck1, mechanicTruck2, mechanicTruck3, mechanicTruck4, mechanicBus1, mechanicBus2,
-                mechanicBus3, mechanicBus4, mechanicAll1, mechanicAll2, mechanicAll3, mechanicAll4);
+        List<Mechanic> mechanics = new ArrayList<>();
 
-//        mechanics.add(mechanicCar1);
-//        mechanics.add(mechanicCar2);
-//        mechanics.add(mechanicCar3);
-//        mechanics.add(mechanicCar4);
-//        mechanics.add(mechanicTruck1);
-//        mechanics.add(mechanicTruck2);
-//        mechanics.add(mechanicTruck3);
-//        mechanics.add(mechanicTruck4);
-//        mechanics.add(mechanicBus1);
-//        mechanics.add(mechanicBus2);
-//        mechanics.add(mechanicBus3);
-//        mechanics.add(mechanicBus4);
-//        mechanics.add(mechanicAll1);
-//        mechanics.add(mechanicAll2);
-//        mechanics.add(mechanicAll3);
-//        mechanics.add(mechanicAll4);
+        mechanics.add(mechanicCar1);
+        mechanics.add(mechanicCar2);
+        mechanics.add(mechanicCar3);
+        mechanics.add(mechanicCar4);
+        mechanics.add(mechanicTruck1);
+        mechanics.add(mechanicTruck2);
+        mechanics.add(mechanicTruck3);
+        mechanics.add(mechanicTruck4);
+        mechanics.add(mechanicBus1);
+        mechanics.add(mechanicBus2);
+        mechanics.add(mechanicBus3);
+        mechanics.add(mechanicBus4);
+        mechanics.add(mechanicAll1);
+        mechanics.add(mechanicAll2);
+        mechanics.add(mechanicAll3);
+        mechanics.add(mechanicAll4);
 
 
                       // Добавлены автомобили и закреплены водители. Также сделано ограничение, например, нельзя добавить водителя категории С к автомобилю категории B т т.д.
@@ -111,26 +114,28 @@ public class MainCars {
 
 
 
-//Тут добавляются механики к автомобилям. Я сделал так, что у любого авто может быть один, либо два механика
+//Тут добавляются механики к автомобилям. Добавить можно любое количество механиков.
 // В консоли виден результат, механики, которые не соответствуют типу автомобиля, не добавляются, вместо этого срабатывают экспепшены с комментарием, что нельзя добавить данного механика к автомобилю.
 
         //Cars
         transports.get(0).addMechanics(mechanics.get(0), mechanics.get(13)); // Успешно добавятся оба
-        transports.get(1).addMechanics(mechanics.get(4)); // Не добавится, т.к. механик имеет доступ к Truck
+        transports.get(1).addMechanics(mechanics.get(4), mechanics.get(2)); // Первый не добавится, т.к. механик имеет доступ к Truck
         transports.get(2).addMechanics(mechanics.get(2), mechanics.get(1)); // Успешно добавятся оба
-        transports.get(3).addMechanics(mechanics.get(9), mechanics.get(2)); //Первый не добавится(имеет доступ к Bus), второй добавится
+        transports.get(3).addMechanics(mechanics.get(9), mechanics.get(2), mechanics.get(13)); //Первый не добавится(имеет доступ к Bus), второй и третий добавятся
 
         //Trucks
         transports.get(4).addMechanics(mechanics.get(14), mechanics.get(1)); // Первый добавится, второй имеет доступ только к Car
-        transports.get(5).addMechanics(mechanics.get(5), mechanics.get(6)); // Успешно добавятся оба
+        transports.get(5).addMechanics(mechanics.get(5), mechanics.get(6), mechanics.get(12)); // Успешно добавятся трое
         transports.get(6).addMechanics(mechanics.get(6)); // Добавится
         transports.get(7).addMechanics(mechanics.get(7), mechanics.get(8)); //Первый добавится, второй имеет доступ только к Bus
 
         //Buses
-        transports.get(8).addMechanics(mechanics.get(8), mechanics.get(9)); // Успешно добавятся оба
+        transports.get(8).addMechanics(mechanics.get(8), mechanics.get(9), mechanics.get(10)); // Успешно добавятся трое
         transports.get(9).addMechanics(mechanics.get(1), mechanics.get(14)); //Первый не добавится(имеет доступ к Car), второй добавится
         transports.get(10).addMechanics(mechanics.get(8)); // Добавится
         transports.get(11).addMechanics(mechanics.get(10), mechanics.get(12)); // Успешно добавятся оба
+
+
 
         //и того, пять механиков не добавилось, по ним выдаст соответствующий эксепшн
 
@@ -159,21 +164,20 @@ public class MainCars {
 
 
 
-        //Здесь можно посмотреть водителя по конкретному автомобилю
-//        System.out.println();
-//        System.out.println("Водитель транспортного средства с индексом 0: "+ transports.get(0).getDriver());
-//        System.out.println("Водитель транспортного средства с индексом 5: "+ transports.get(5).getDriver());
-//        System.out.println("Водитель транспортного средства с индексом 8: "+ transports.get(8).getDriver());
 
+        // Выводится информация по любому транспорту по индексу. Также указаны водители и механики, закрепленные за авто.
+        // Там, где водители или механики не добавились, высвечивается null.
+       showInfoTransport(transports, 5);
+       showInfoTransport(transports, 8);
+       showInfoTransport(transports, 0);
+       showInfoTransport(transports, 2);
 
-        // Здесь просто выводится информация toString() по всем машинам любой категории. Также указаны водители и механики, закрепленные за авто.
-        // Там, где механики не добавились, высвечивается null.
-        System.out.println();
-        for (int i = 0; i < transports.size(); i++) {
-            System.out.println(transports.get(i));
-        }
+       // Выводится полный список всех машин с водителями и механиками
+ //    showInfoTransports(transports);
 
     }
+
+
 
 
 }

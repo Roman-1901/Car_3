@@ -5,6 +5,8 @@ import transport.Car;
 import transport.Transport;
 import transport.Truck;
 
+import java.util.SortedMap;
+
 public class Mechanic {
     private String name;
     private String surname;
@@ -53,45 +55,39 @@ public class Mechanic {
 
 
 
-    public void fixTransport (Transport transport) {
-        try {
-            if (name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname()) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname())))  {
-                System.out.println("Механик "+ name + " " + surname + " успешно отремонтировал транспорт " + transport.getBrand() + " " + transport.getModel());
-            }  else {
-                try {
-                    throw new RuntimeException("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
-                } catch (RuntimeException e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-        } catch (RuntimeException e) {
-            System.out.println("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
-        }
-    }
 
+    public void fixTransport (Transport transport) {
+        fixCheckTransport (transport, " успешно отремонтировал транспорт ", " не может ремонтировать транспорт ");
+    }
 
     public void serviceTransport (Transport transport) {
-        try {
-            if ((name.equals(transport.getMechanic1().getName()) && surname.equals(transport.getMechanic1().getSurname())) || (name.equals(transport.getMechanic2().getName()) && surname.equals(transport.getMechanic2().getSurname()))) {
-                System.out.println("Механик " + name + " " + surname + " успешно провел техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+        fixCheckTransport (transport, " успешно провел техобслуживание транспорта ", " не может проводить техобслуживание транспорта ");
+    }
+
+
+    public void fixCheckTransport (Transport transport, String fixCheck, String notFixCheck) {
+        boolean check = false;
+        for (int i = 0; i < transport.mechanics.size(); i++) {
+            if (name.equals(transport.mechanics.get(i).getName()) && surname.equals(transport.mechanics.get(i).getSurname())) {
+                check = true;
+                System.out.println("Механик " + name + " " + surname + fixCheck + transport.getBrand() + " " + transport.getModel());
+                break;
             }
-            else {
-                try {
-                    throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
-                } catch (RuntimeException e) {
-                    System.out.println(e.getMessage());
-                }
+        }
+        if (!check) {
+            try {
+                throw new RuntimeException("Механик "+ name + " " + surname + notFixCheck + transport.getBrand() + " " + transport.getModel());
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
             }
-        } catch (RuntimeException e) {
-            System.out.println("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
         }
     }
 
 
 
-
-    @Override
-    public String toString() {
-        return name + " " +surname + ", компания: " + nameCompany;
+        @Override
+        public String toString () {
+            return name + " " + surname + ", компания: " + nameCompany;
+        }
     }
-}
+

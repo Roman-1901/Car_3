@@ -1,7 +1,9 @@
 package transport;
 
 import drivers.Driver;
-import drivers.DriverB;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Transport implements  Competing{
     private final String brand;
@@ -13,8 +15,7 @@ public abstract class Transport implements  Competing{
 
     private Driver driver;
 
-    private Mechanic mechanic1;
-    private Mechanic mechanic2;
+    protected List <Mechanic> mechanics = new ArrayList<>();
 
     public Transport(String brand, String model, double engineVolume, Driver driver) {
         String def = "default";
@@ -57,16 +58,9 @@ public abstract class Transport implements  Competing{
         this.service = service;
     }
 
-    public void startMoving() {
-        System.out.println(getBrand() +" " + getModel() + " начинает движение");
-    }
 
-    public void endMoving() {
-        System.out.println(getBrand() +" " + getModel() + " заканчивает движение");
-    }
-
-    public Driver getDriver() {
-        return driver;
+    public String getDriver() {
+        return "Водитель " + driver;
     }
 
     public void setDriver(Driver driver) {
@@ -74,25 +68,56 @@ public abstract class Transport implements  Competing{
     }
 
 
-    public void setMechanic(Mechanic mechanic1) {
-        this.mechanic1 = mechanic1;
+    public void getMechanics() {
+        System.out.println("Механики:");
+        for (int i = 0; i < mechanics.size(); i++) {
+            System.out.println(mechanics.get(i));
+        }
     }
 
-    public void setMechanic(Mechanic mechanic1, Mechanic mechanic2) {
-        this.mechanic1 = mechanic1;
-        this.mechanic2 = mechanic2;
+
+
+    public abstract void addMechanics(Mechanic ... mechanic);
+
+    public void addMechanicsTransport(int num1, int num2, Mechanic ... mech) {
+        for (Mechanic mechanic : mech) {
+            if (mechanic.getAccessCar().getNum() == num1 || mechanic.getAccessCar().getNum() == num2) {
+                mechanics.add(mechanic);
+            } else {
+                try {
+                    throw new RuntimeException("Нельзя добавить механика " + mechanic.getName() + " "+ mechanic.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
+                } catch (RuntimeException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
     }
 
-    public Mechanic getMechanic1() {
-        return mechanic1;
+    public static void showInfoTransport(List<Transport> transports, int index) {
+        System.out.println(transports.get(index));
+        System.out.println(transports.get(index).getDriver());
+        transports.get(index).getMechanics();
     }
 
-    public Mechanic getMechanic2() {
-        return mechanic2;
+    public static void showInfoTransports(List<Transport> transports) {
+        for (int i = 0; i < transports.size(); i++) {
+            System.out.println(transports.get(i));
+            System.out.println(transports.get(i).getDriver());
+            transports.get(i).getMechanics();
+        }
     }
 
-    public abstract void addMechanics(Mechanic mechanic1);
-    public abstract void addMechanics(Mechanic mechanic1, Mechanic mechanic2);
+
+
+    //------------------------------------------------------------------------------------------------------
+
+    public void startMoving() {
+        System.out.println(getBrand() +" " + getModel() + " начинает движение");
+    }
+
+    public void endMoving() {
+        System.out.println(getBrand() +" " + getModel() + " заканчивает движение");
+    }
 
     @Override
     public void pitStop(boolean pitStop) {
@@ -154,15 +179,11 @@ public abstract class Transport implements  Competing{
 
 
 
-
-    @Override
     public String toString() {
         if (getDriver() != null) {
-            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n"
-                    + getDriver() + "\n" + "Механик 1: "+ getMechanic1() + "\n"+ "Механик 2: " + getMechanic2() + "\n";
+            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n";
         } else {
-            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n"
-                    + "Водитель отсутствует" + "\n" + "Механик 1: "+ getMechanic1() + "\n"+ "Механик 2: " + getMechanic2() + "\n";
+            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n";
         }
     }
 }
