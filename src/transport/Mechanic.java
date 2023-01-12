@@ -59,7 +59,7 @@ public class Mechanic {
                 System.out.println("Механик "+ name + " " + surname + " успешно отремонтировал транспорт " + transport.getBrand() + " " + transport.getModel());
             }  else {
                 try {
-                    throw new RuntimeException("Механик "+ name + " " + surname + " не может проводить техобслуживание транспорта " + transport.getBrand() + " " + transport.getModel());
+                    throw new RuntimeException("Механик "+ name + " " + surname + " не может ремонтировать транспорт " + transport.getBrand() + " " + transport.getModel());
                 } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 }
