@@ -75,12 +75,8 @@ public class Mechanic {
             }
         }
         if (!check) {
-            try {
-                throw new RuntimeException("Механик "+ name + " " + surname + notFixCheck + transport.getBrand() + " " + transport.getModel());
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
+                System.out.println("Механик "+ name + " " + surname + notFixCheck + transport.getBrand() + " " + transport.getModel());
             }
-        }
     }
 
 

@@ -84,12 +84,8 @@ public abstract class Transport implements  Competing{
             if (mechanic.getAccessCar().getNum() == num1 || mechanic.getAccessCar().getNum() == num2) {
                 mechanics.add(mechanic);
             } else {
-                try {
-                    throw new RuntimeException("Нельзя добавить механика " + mechanic.getName() + " "+ mechanic.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
-                } catch (RuntimeException e) {
-                    System.out.println(e.getMessage());
+                System.out.println("Нельзя добавить механика " + mechanic.getName() + " "+ mechanic.getSurname() + " к транспорту "+ getBrand() + " "+ getModel());
                 }
-            }
         }
     }
 
