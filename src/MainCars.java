@@ -176,7 +176,8 @@ public class MainCars {
  //    showInfoTransports(transports);
 
 
-        //Проверка диагностики. У первой машины отсутсвует водитель, выдаст исключение, у второй проверит
+        //Проверка диагностики. У первой машины отсутсвует водитель, выдаст исключение, у второй проверит, третий - автобус, в проверке не нуждается
+        System.out.println();
         try {
             transports.get(0).Diagnostic();
         } catch (NotDriveLicense e) {
