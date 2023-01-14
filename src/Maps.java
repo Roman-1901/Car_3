@@ -74,9 +74,7 @@ public class Maps {
         hashMap.put(car1, mechanicCar1);
            hashMap.put(car2, mechanicCar1);
 
-        for (Map.Entry<Transport, Mechanic> map : hashMap.entrySet()) {
-            System.out.println(map.getKey() + " : " + map.getValue());
-        }
+
 
     }
 }
