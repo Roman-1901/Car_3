@@ -1,5 +1,6 @@
 package transport;
 
+import Exceptions.NotDriveLicense;
 import drivers.DriverD;
 
 public class Bus extends Transport implements Competing {
@@ -31,7 +32,6 @@ public class Bus extends Transport implements Competing {
     public Bus(String brand, String model, double engineVolume, BusType type, DriverD driver) {
         super(brand, model, engineVolume, driver);
         this.type = type;
-        setService(true);
     }
 
     public BusType getType() {
@@ -40,6 +40,10 @@ public class Bus extends Transport implements Competing {
 
     public void setType(String type) {
         this.type = BusType.valueOf(type);
+    }
+
+    public void Diagnostic(){
+        System.out.println(getBrand() + " " + getModel() + " - данный вид транспорта в диагностике не требуется");
     }
 
     public void printType() {

@@ -1,5 +1,6 @@
 package transport;
 
+import Exceptions.NotDriveLicense;
 import drivers.DriverC;
 
 public class Truck extends Transport implements Competing {
@@ -56,9 +57,13 @@ public class Truck extends Transport implements Competing {
     }
 
     @Override
-    public void Diagnostic() {
-        setService(true);
-        System.out.println("Транспортное средство " + getBrand() + " " + getModel() + " прошло диагностику");
+    public void Diagnostic() throws NotDriveLicense{
+        if (getDriver().equals("Водитель " + null)) {
+            System.out.println("Транспортное средство " + getBrand() + " " + getModel() + " прошло диагностику");
+        }
+        else {
+            throw new NotDriveLicense("Отсутствуют водительские права");
+        }
     }
 
     @Override
