@@ -152,11 +152,8 @@ public abstract class Transport implements  Competing{
 
 
     public String toString() {
-        if (getDriver() != null) {
-            return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n";
-        } else {
             return "Данные транспортного средства: бренд: " + getBrand() + ", модель: " + getModel() + ", объем двигателя: " + getEngineVolume() + "\n";
         }
     }
-}
+
 

@@ -7,11 +7,7 @@ import drivers.DriverD;
 import transport.*;
 
 import javax.tools.Diagnostic;
-import java.util.ArrayList;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static transport.Transport.*;
 public class Maps {
@@ -72,9 +68,30 @@ public class Maps {
 
         Map<Transport, Mechanic> hashMap = new HashMap<>();
         hashMap.put(car1, mechanicCar1);
-           hashMap.put(car2, mechanicCar1);
+        hashMap.put(car2, mechanicCar2);
+        hashMap.put(truck2, mechanicTruck2);
+        hashMap.put(truck3, mechanicTruck3);
+        hashMap.put(bus1, mechanicBus1);
+        hashMap.put(bus3, mechanicBus3);
+
+        //дублируем те же записи и видим, что они не повторяются в консоли
+        hashMap.put(car1, mechanicCar1);
+        hashMap.put(car2, mechanicCar2);
+        hashMap.put(truck2, mechanicTruck2);
+        hashMap.put(truck3, mechanicTruck3);
+        hashMap.put(bus1, mechanicBus1);
+        hashMap.put(bus3, mechanicBus3);
+
+
+        for (Map.Entry<Transport, Mechanic> map : hashMap.entrySet()) {
+            System.out.println(map.getKey() + " : " + map.getValue());
+        }
+
+
 
 
 
     }
+
+
 }
