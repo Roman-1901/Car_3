@@ -6,13 +6,12 @@ import drivers.DriverC;
 import drivers.DriverD;
 import transport.*;
 
+import javax.tools.Diagnostic;
 import java.util.ArrayList;
 
 import java.util.List;
 
-
-import static transport.Transport.showInfoTransport;
-import static transport.Transport.showInfoTransports;
+import static transport.Transport.*;
 
 
 public class MainCars {
@@ -83,7 +82,7 @@ public class MainCars {
 
                       // Добавлены автомобили и закреплены водители. Также сделано ограничение, например, нельзя добавить водителя категории С к автомобилю категории B т т.д.
 
-        Car car1 = new Car("BMW", "Z8", 3.0, Car.CarType.HATCHBACK, (DriverB) drivers.get(0));
+        Car car1 = new Car("BMW", "Z8", 3.0, Car.CarType.HATCHBACK, null);
         Car car2 = new Car("Kia", "Sportage 4", 2.4, Car.CarType.SEDAN, (DriverB) drivers.get(1));
         Car car3 = new Car("Audi", "A8", 3.0, Car.CarType.MINIVAN, null);
         Car car4 = new Car("Hyundai", "Avante", 1.6, Car.CarType.VAN, (DriverB) drivers.get(3));
@@ -175,6 +174,26 @@ public class MainCars {
 
        // Выводится полный список всех машин с водителями и механиками
  //    showInfoTransports(transports);
+
+
+        //Проверка диагностики. У первой машины отсутсвует водитель, выдаст исключение, у второй проверит
+        try {
+            transports.get(0).Diagnostic();
+        } catch (NotDriveLicense e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            transports.get(1).Diagnostic();
+        } catch (NotDriveLicense e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            transports.get(11).Diagnostic();
+        } catch (NotDriveLicense e) {
+            System.out.println(e.getMessage());
+        }
 
     }
 

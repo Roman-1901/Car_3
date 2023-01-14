@@ -1,5 +1,6 @@
 package transport;
 
+import Exceptions.NotDriveLicense;
 import drivers.Driver;
 
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ public abstract class Transport implements  Competing{
 
     private double engineVolume;
 
-    private boolean service;
 
     private Driver driver;
 
@@ -31,7 +31,6 @@ public abstract class Transport implements  Competing{
         this.brand = brand;
         this.model = model;
         this.engineVolume = engineVolume;
-        this.service = false;
         this.driver = driver;
 
         }
@@ -48,14 +47,6 @@ public abstract class Transport implements  Competing{
 
     public double getEngineVolume() {
         return engineVolume;
-    }
-
-    public boolean getService() {
-        return service;
-    }
-
-    public void setService(boolean service) {
-        this.service = service;
     }
 
 
@@ -148,31 +139,16 @@ public abstract class Transport implements  Competing{
 
 
 
-    public void Diagnostic() {
-        setService(true);
-        throw new UnsupportedOperationException(getBrand() + " " + getModel() + " - данный вид транспорта в диагностике не требуется");
-    }
+   public abstract void Diagnostic() throws NotDriveLicense;
 
-    public static void doDiagnostic(Transport... transports) {
-        for (Transport transport : transports) {
+
+    public void doDiagnostic() {
             try {
-                transport.Diagnostic();
-            } catch (UnsupportedOperationException e) {
+                Diagnostic();
+            } catch (NotDriveLicense e) {
                 System.out.println(e.getMessage());
             }
-        }
     }
-
-    public static void checkDiagnostic (Transport... transports) {
-        for (Transport transport : transports) {
-            if (!transport.getService()) {
-                throw new RuntimeException("Транспортное средство " + transport.getBrand() + " " + transport.getModel() + " не прошло диагностику");
-            } else {
-                System.out.println(transport.getBrand() + " " + transport.getModel() + " - ОК");
-            }
-        }
-    }
-
 
 
     public String toString() {
